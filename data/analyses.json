@@ -1,1 +1,238 @@
-[]
+[
+  {
+    "id": "f6cec786-95d4-4e39-b193-580acb28b2dc",
+    "saved_at": "2026-05-03T18:46:54.131Z",
+    "analyzed_at": "2026-05-03T18:46:51.835Z",
+    "email_snippet": "From: Amazon <no-reply@amazon-support-center.com> To: user@email.com Subject: Problem with your recent order Date: Tue, 5 May 2026 11:03:02 -0500 Hello, We encountered an issue processing your recen",
+    "risk_level": "High",
+    "score": 55,
+    "flags_count": 3,
+    "flags": [
+      {
+        "id": "sender_mismatch",
+        "category": "Sender Deception",
+        "description": "1 sender context inconsistency: Brand mentioned (Amazon) but no corresponding legitimate domain found.",
+        "explanation": "Brand impersonation is one of the most effective phishing techniques. Attackers claim to be from PayPal, Amazon, your bank, etc. while the actual links and sender addresses point elsewhere. Clues include: the From address not matching the brand's domain, a Reply-To address that goes to a different server, or brand logos/names paired with suspicious URLs.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Brand mentioned (Amazon) but no corresponding legitimate domain found"
+        ]
+      },
+      {
+        "id": "suspicious_url",
+        "category": "Malicious Links",
+        "description": "1 suspicious link pattern found — URL obfuscation, typosquatted domains, or shorteners detected.",
+        "explanation": "Phishers hide dangerous URLs using IP addresses, URL shorteners (bit.ly, tinyurl), typosquatted brand names (paypa1.com), or subdomain tricks (paypal.com.evil.com). Always hover over links to preview the real destination before clicking, and navigate to sites directly instead of through email links.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Amazon"
+        ]
+      },
+      {
+        "id": "urgency_language",
+        "category": "Psychological Manipulation",
+        "description": "1 urgency pattern detected — email applies time pressure on the recipient.",
+        "explanation": "Phishing emails create artificial urgency to make you act before you think. Phrases like 'Act now', 'Your account will be suspended', or 'Final notice' are designed to trigger panic and bypass skepticism. Legitimate organizations give reasonable timelines and do not threaten immediate consequences via email.",
+        "severity": "low",
+        "match_count": 1,
+        "matched_examples": [
+          "within 24 hours"
+        ]
+      }
+    ],
+    "summary": "3 phishing indicators detected. Total risk score: 55/100 — Risk level: High. The strongest signal: Sender Deception (28 pts).",
+    "recommendations": [
+      "Do not click any links or open any attachments in this email.",
+      "Report this email to your IT or security team immediately.",
+      "Verify any claimed account issues by logging into the service directly (type the URL yourself — do not use email links).",
+      "If you have already clicked a link or entered any information: change affected passwords NOW and enable two-factor authentication.",
+      "Mark the email as phishing/spam so your provider can improve detection for others."
+    ]
+  },
+  {
+    "id": "79e5f8fd-949c-4b2d-bd21-40527fb2fbf1",
+    "saved_at": "2026-05-03T18:40:41.507Z",
+    "analyzed_at": "2026-05-03T18:40:37.338Z",
+    "email_snippet": "From: Amazon <no-reply@amazon-support-center.com> To: user@email.com Subject: Problem with your recent order Date: Tue, 5 May 2026 11:03:02 -0500 Hello, We encountered an issue processing your recen",
+    "risk_level": "High",
+    "score": 55,
+    "flags_count": 3,
+    "flags": [
+      {
+        "id": "sender_mismatch",
+        "category": "Sender Deception",
+        "description": "1 sender context inconsistency: Brand mentioned (Amazon) but no corresponding legitimate domain found.",
+        "explanation": "Brand impersonation is one of the most effective phishing techniques. Attackers claim to be from PayPal, Amazon, your bank, etc. while the actual links and sender addresses point elsewhere. Clues include: the From address not matching the brand's domain, a Reply-To address that goes to a different server, or brand logos/names paired with suspicious URLs.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Brand mentioned (Amazon) but no corresponding legitimate domain found"
+        ]
+      },
+      {
+        "id": "suspicious_url",
+        "category": "Malicious Links",
+        "description": "1 suspicious link pattern found — URL obfuscation, typosquatted domains, or shorteners detected.",
+        "explanation": "Phishers hide dangerous URLs using IP addresses, URL shorteners (bit.ly, tinyurl), typosquatted brand names (paypa1.com), or subdomain tricks (paypal.com.evil.com). Always hover over links to preview the real destination before clicking, and navigate to sites directly instead of through email links.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Amazon"
+        ]
+      },
+      {
+        "id": "urgency_language",
+        "category": "Psychological Manipulation",
+        "description": "1 urgency pattern detected — email applies time pressure on the recipient.",
+        "explanation": "Phishing emails create artificial urgency to make you act before you think. Phrases like 'Act now', 'Your account will be suspended', or 'Final notice' are designed to trigger panic and bypass skepticism. Legitimate organizations give reasonable timelines and do not threaten immediate consequences via email.",
+        "severity": "low",
+        "match_count": 1,
+        "matched_examples": [
+          "within 24 hours"
+        ]
+      }
+    ],
+    "summary": "3 phishing indicators detected. Total risk score: 55/100 — Risk level: High. The strongest signal: Sender Deception (28 pts).",
+    "recommendations": [
+      "Do not click any links or open any attachments in this email.",
+      "Report this email to your IT or security team immediately.",
+      "Verify any claimed account issues by logging into the service directly (type the URL yourself — do not use email links).",
+      "If you have already clicked a link or entered any information: change affected passwords NOW and enable two-factor authentication.",
+      "Mark the email as phishing/spam so your provider can improve detection for others."
+    ]
+  },
+  {
+    "id": "92d78b16-1a1a-46bb-822b-a1facfbcee46",
+    "saved_at": "2026-05-03T18:40:11.573Z",
+    "analyzed_at": "2026-05-03T18:40:03.132Z",
+    "email_snippet": "From: PayPal Support <support@paypa1-security.com> To: user@email.com Subject: URGENT: Your Account Has Been Suspended!!! Date: Tue, 5 May 2026 09:12:44 -0500 Dear Customer, Your PayPal account has",
+    "risk_level": "Critical",
+    "score": 100,
+    "flags_count": 6,
+    "flags": [
+      {
+        "id": "credential_harvesting",
+        "category": "Credential Harvesting",
+        "description": "1 credential or PII request found — email solicits passwords, financial data, or personal identifiers.",
+        "explanation": "Legitimate organizations NEVER ask for passwords, full credit card numbers, Social Security numbers, or security answers via email. Any email requesting this information is either a phishing attempt or a severe security policy violation. Do not comply — contact the organization through their official website or phone number instead.",
+        "severity": "critical",
+        "match_count": 1,
+        "matched_examples": [
+          "verify"
+        ]
+      },
+      {
+        "id": "sender_mismatch",
+        "category": "Sender Deception",
+        "description": "1 sender context inconsistency: Brand mentioned (PayPal) but no corresponding legitimate domain found.",
+        "explanation": "Brand impersonation is one of the most effective phishing techniques. Attackers claim to be from PayPal, Amazon, your bank, etc. while the actual links and sender addresses point elsewhere. Clues include: the From address not matching the brand's domain, a Reply-To address that goes to a different server, or brand logos/names paired with suspicious URLs.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Brand mentioned (PayPal) but no corresponding legitimate domain found"
+        ]
+      },
+      {
+        "id": "suspicious_url",
+        "category": "Malicious Links",
+        "description": "2 suspicious link patterns found — URL obfuscation, typosquatted domains, or shorteners detected.",
+        "explanation": "Phishers hide dangerous URLs using IP addresses, URL shorteners (bit.ly, tinyurl), typosquatted brand names (paypa1.com), or subdomain tricks (paypal.com.evil.com). Always hover over links to preview the real destination before clicking, and navigate to sites directly instead of through email links.",
+        "severity": "high",
+        "match_count": 2,
+        "matched_examples": [
+          "PayPal",
+          "Click here to restore access:\nhttp"
+        ]
+      },
+      {
+        "id": "urgency_language",
+        "category": "Psychological Manipulation",
+        "description": "6 urgency patterns detected — email applies time pressure on the recipient.",
+        "explanation": "Phishing emails create artificial urgency to make you act before you think. Phrases like 'Act now', 'Your account will be suspended', or 'Final notice' are designed to trigger panic and bypass skepticism. Legitimate organizations give reasonable timelines and do not threaten immediate consequences via email.",
+        "severity": "critical",
+        "match_count": 6,
+        "matched_examples": [
+          "act now",
+          "ly",
+          "URGENT"
+        ]
+      },
+      {
+        "id": "formatting_issues",
+        "category": "Suspicious Formatting",
+        "description": "1 formatting anomaly detected: Excessive exclamation marks: 3 exclamation marks found.",
+        "explanation": "Phishing emails often have formatting tells: excessive CAPS and exclamation marks to create panic, lookalike Unicode letters to fool filters (е.g., Cyrillic 'е' instead of Latin 'e'), invisible hidden text to bypass spam detection, or unfilled template placeholders from mass-mail campaigns.",
+        "severity": "low",
+        "match_count": 1,
+        "matched_examples": [
+          "Excessive exclamation marks: 3 exclamation marks found"
+        ]
+      },
+      {
+        "id": "generic_greeting",
+        "category": "Impersonalization",
+        "description": "Generic greeting detected: \"Dear Customer\" — sender does not know the recipient's name.",
+        "explanation": "Legitimate companies address you by your first and/or last name because they have your account details. A generic greeting like 'Dear Customer' or 'Dear User' indicates the sender likely obtained your email from a list and does not know who you are — a hallmark of mass phishing campaigns.",
+        "severity": "low",
+        "match_count": 1,
+        "matched_examples": [
+          "Dear Customer"
+        ]
+      }
+    ],
+    "summary": "6 phishing indicators detected. Total risk score: 100/100 — Risk level: Critical. The strongest signal: Credential Harvesting (35 pts).",
+    "recommendations": [
+      "STOP — do not click, reply, forward, or open attachments from this email.",
+      "Report it immediately to your IT/security team and mark it as phishing in your email client.",
+      "If you have already entered any credentials or financial information: change ALL affected passwords immediately, contact your bank, and freeze your credit if applicable.",
+      "Enable two-factor authentication on every account that could be at risk.",
+      "Document what you did (screenshots, timestamps) and consider reporting to the FTC (ReportFraud.ftc.gov) or the Anti-Phishing Working Group (reportphishing@apwg.org).",
+      "Perform a malware scan if you opened any attachment or downloaded any file."
+    ]
+  },
+  {
+    "id": "605bd5f2-3647-427d-ade4-957836c3416e",
+    "saved_at": "2026-05-03T18:32:49.592Z",
+    "analyzed_at": "2026-05-03T18:32:33.262Z",
+    "email_snippet": "From: Purdue IT Support <it-support@purdue-helpdesk.com> To: Juwon Adeyiolu <oadeyiol@purdue.edu> Subject: Action Required: Unusual Login Attempt Detected Date: Mon, 4 May 2026 8:42:17 -0500 Reply-To:",
+    "risk_level": "High",
+    "score": 50,
+    "flags_count": 2,
+    "flags": [
+      {
+        "id": "credential_harvesting",
+        "category": "Credential Harvesting",
+        "description": "1 credential or PII request found — email solicits passwords, financial data, or personal identifiers.",
+        "explanation": "Legitimate organizations NEVER ask for passwords, full credit card numbers, Social Security numbers, or security answers via email. Any email requesting this information is either a phishing attempt or a severe security policy violation. Do not comply — contact the organization through their official website or phone number instead.",
+        "severity": "critical",
+        "match_count": 1,
+        "matched_examples": [
+          "verify"
+        ]
+      },
+      {
+        "id": "urgency_language",
+        "category": "Psychological Manipulation",
+        "description": "3 urgency patterns detected — email applies time pressure on the recipient.",
+        "explanation": "Phishing emails create artificial urgency to make you act before you think. Phrases like 'Act now', 'Your account will be suspended', or 'Final notice' are designed to trigger panic and bypass skepticism. Legitimate organizations give reasonable timelines and do not threaten immediate consequences via email.",
+        "severity": "high",
+        "match_count": 3,
+        "matched_examples": [
+          "your",
+          "Action Required",
+          "the next"
+        ]
+      }
+    ],
+    "summary": "2 phishing indicators detected. Total risk score: 50/100 — Risk level: High. The strongest signal: Credential Harvesting (35 pts).",
+    "recommendations": [
+      "Do not click any links or open any attachments in this email.",
+      "Report this email to your IT or security team immediately.",
+      "Verify any claimed account issues by logging into the service directly (type the URL yourself — do not use email links).",
+      "If you have already clicked a link or entered any information: change affected passwords NOW and enable two-factor authentication.",
+      "Mark the email as phishing/spam so your provider can improve detection for others."
+    ]
+  }
+]

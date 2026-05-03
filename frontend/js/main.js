@@ -70,6 +70,8 @@ form.addEventListener("submit", async (e) => {
     const result = await analyzeEmail(emailText);
     lastResult = result;
     lastEmail  = emailText;
+    
+    console.log("🟢 [Data Flow] Received structured response from MCP tool:", result);
     renderResults(result);
   } catch (err) {
     showToast("Analysis failed. Is the MCP server running?");

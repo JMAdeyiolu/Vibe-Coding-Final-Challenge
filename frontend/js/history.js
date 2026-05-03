@@ -16,7 +16,9 @@ let allRecords = []; // local cache
  */
 export async function loadHistory() {
   try {
-    allRecords = await getHistory({ limit: 100 });
+    const response = await getHistory({ limit: 100 });
+    // The API returns an envelope: { records: [...], total_stored: N, ... }
+    allRecords = response.records || [];
   } catch (err) {
     console.error("Failed to load history:", err);
     allRecords = [];
