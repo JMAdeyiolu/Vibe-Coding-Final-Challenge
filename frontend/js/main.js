@@ -5,9 +5,9 @@
  * all event listeners. Imports from api.js, ui.js, and history.js.
  */
 
-import { analyzeEmail, saveAnalysis } from "./api.js";
-import { renderResults, showToast, setLoadingState } from "./ui.js";
-import { loadHistory } from "./history.js";
+import { analyzeEmail, saveAnalysis } from "./api.js?v=4";
+import { renderResults, showToast, setLoadingState } from "./ui.js?v=4";
+import { loadHistory } from "./history.js?v=4";
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let lastResult = null;   // most recent analysis result (for save)
@@ -83,19 +83,23 @@ form.addEventListener("submit", async (e) => {
 
 // ── Save Result ───────────────────────────────────────────────────────────────
 document.getElementById("btn-save").addEventListener("click", async () => {
+  console.log("🟡 [Save] Button clicked. state:", { lastResult, lastEmail });
   if (!lastResult || !lastEmail) return;
 
   const btn = document.getElementById("btn-save");
   btn.disabled = true;
   btn.textContent = "Saving…";
 
+  console.log("🟡 [Save] Sending analysis to MCP server to persist...", { email: lastEmail.slice(0, 50) + "...", result: lastResult });
+
   try {
-    await saveAnalysis(lastEmail, lastResult);
+    const savedRecord = await saveAnalysis(lastEmail, lastResult);
+    console.log("🟢 [Save] Successfully saved! Server returned record:", savedRecord);
     showToast("Result saved to history.");
     btn.textContent = "Saved ✓";
   } catch (err) {
     showToast("Failed to save result.");
-    console.error(err);
+    console.error("🔴 [Save] Failed to save result:", err);
     btn.disabled = false;
     btn.textContent = "Save Result";
   }

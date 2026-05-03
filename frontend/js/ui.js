@@ -78,7 +78,7 @@ export function renderHistoryCard(record) {
   card.dataset.id = record.id;
   card.dataset.risk = record.risk_level;
 
-  const ts = new Date(record.timestamp).toLocaleString(undefined, {
+  const ts = new Date(record.saved_at).toLocaleString(undefined, {
     dateStyle: "medium", timeStyle: "short",
   });
 

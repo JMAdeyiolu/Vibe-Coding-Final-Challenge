@@ -344,4 +344,48 @@ Updated `README.md` to include a prominent "How to Run" section distinguishing b
 
 ---
 
-*End of log — updated 2026-05-03 14:55*
+## Turn 13
+
+**User** · 2026-05-03 15:04
+
+> The hisotry feature is not working properly. When I analyze and save an email, nothing shows up in the history tab and it doesn’t seem like the data is being persisted. I want you to debug this end to end...
+
+**Assistant**
+
+Performed an end-to-end trace:
+- **Backend Persistence**: Verified that `data/analyses.json` was correctly created by `storage.js` and successfully held 5 saved analysis records.
+- **Root Cause**: Identified aggressive browser caching of static JS files via the Python HTTP server (`304 Not Modified`). The browser had cached the buggy `history.js` file before the previous fix.
+- **Fix**: Implemented cache-busting (`?v=2`) in `index.html` and added explicit `console.log` tracing to `main.js` and `history.js` so the user could observe the data flow directly in DevTools.
+
+---
+
+## Turn 14
+
+**User** · 2026-05-03 15:18
+
+> now the cards come up after refreshing but if clicked away from and not hard refreshed they disapper, this also occurs when trying to to use the filter buttons, low, medium, and high
+
+**Assistant**
+
+Used an automated browser subagent to interact with the UI and identified two critical bugs:
+1. **ES Module Caching**: Modern browsers native cache ES Modules. Fixed this by adding `?v=4` to all internal `import` statements inside the JS files.
+2. **DOM Detachment Bug**: The "No analyses saved yet" empty state was being captured by `getElementById` inside the `renderList` function, but was then deleted from the DOM when `container.innerHTML = ""` was called. On subsequent renders (like clicking a filter), `getElementById` returned `null`, crashing the logic. Fixed by caching the element reference at the module scope.
+3. **Invalid Date Bug**: The UI attempted to parse `record.timestamp`, but the backend provides `record.saved_at`. Fixed in `ui.js`.
+
+---
+
+## Turn 15
+
+**User** · 2026-05-03 15:23
+
+> That's works perfectly. Now clean this project up organizing anything that might need further organization updating the chatlog and READ to include anything and everything necessary
+
+**Assistant**
+
+Reviewed the repository structure and found it remarkably clean and well-organized. 
+- Updated `README.md` to perfectly reflect the current file tree (including `tests/` and the new HTTP `shim.js`).
+- Appended Turns 13 through 15 to `chatlog.md` to document all debugging sessions.
+
+---
+
+*End of log — updated 2026-05-03 15:25*

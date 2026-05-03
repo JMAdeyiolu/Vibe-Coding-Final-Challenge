@@ -1,5 +1,98 @@
 [
   {
+    "id": "2620e46a-0700-46cd-b9c9-eb001d797489",
+    "saved_at": "2026-05-03T19:10:22.650Z",
+    "analyzed_at": "2026-05-03T19:10:20.584Z",
+    "email_snippet": "From: Netflix <support@netflix-mail.com> To: user@email.com Subject: Update your payment method Date: Tue, 5 May 2026 14:22:18 -0500 Hi, We had trouble processing your latest payment. Your account w",
+    "risk_level": "High",
+    "score": 55,
+    "flags_count": 3,
+    "flags": [
+      {
+        "id": "sender_mismatch",
+        "category": "Sender Deception",
+        "description": "1 sender context inconsistency: Brand mentioned (Netflix) but no corresponding legitimate domain found.",
+        "explanation": "Brand impersonation is one of the most effective phishing techniques. Attackers claim to be from PayPal, Amazon, your bank, etc. while the actual links and sender addresses point elsewhere. Clues include: the From address not matching the brand's domain, a Reply-To address that goes to a different server, or brand logos/names paired with suspicious URLs.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Brand mentioned (Netflix) but no corresponding legitimate domain found"
+        ]
+      },
+      {
+        "id": "suspicious_url",
+        "category": "Malicious Links",
+        "description": "1 suspicious link pattern found — URL obfuscation, typosquatted domains, or shorteners detected.",
+        "explanation": "Phishers hide dangerous URLs using IP addresses, URL shorteners (bit.ly, tinyurl), typosquatted brand names (paypa1.com), or subdomain tricks (paypal.com.evil.com). Always hover over links to preview the real destination before clicking, and navigate to sites directly instead of through email links.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Netflix"
+        ]
+      },
+      {
+        "id": "urgency_language",
+        "category": "Psychological Manipulation",
+        "description": "1 urgency pattern detected — email applies time pressure on the recipient.",
+        "explanation": "Phishing emails create artificial urgency to make you act before you think. Phrases like 'Act now', 'Your account will be suspended', or 'Final notice' are designed to trigger panic and bypass skepticism. Legitimate organizations give reasonable timelines and do not threaten immediate consequences via email.",
+        "severity": "low",
+        "match_count": 1,
+        "matched_examples": [
+          "account"
+        ]
+      }
+    ],
+    "summary": "3 phishing indicators detected. Total risk score: 55/100 — Risk level: High. The strongest signal: Sender Deception (28 pts).",
+    "recommendations": [
+      "Do not click any links or open any attachments in this email.",
+      "Report this email to your IT or security team immediately.",
+      "Verify any claimed account issues by logging into the service directly (type the URL yourself — do not use email links).",
+      "If you have already clicked a link or entered any information: change affected passwords NOW and enable two-factor authentication.",
+      "Mark the email as phishing/spam so your provider can improve detection for others."
+    ]
+  },
+  {
+    "id": "aa3c77c5-0825-4327-a9ce-23336b3e65e6",
+    "saved_at": "2026-05-03T19:01:57.647Z",
+    "analyzed_at": "2026-05-03T19:01:53.513Z",
+    "email_snippet": "From: Google Security <no-reply@accounts.google.com> To: user@email.com Subject: New sign-in from Chrome on Windows Date: Tue, 5 May 2026 16:10:33 -0500 We noticed a new sign-in to your Google Accoun",
+    "risk_level": "High",
+    "score": 50,
+    "flags_count": 2,
+    "flags": [
+      {
+        "id": "sender_mismatch",
+        "category": "Sender Deception",
+        "description": "1 sender context inconsistency: Trusted brand mentioned alongside a suspicious or obfuscated URL.",
+        "explanation": "Brand impersonation is one of the most effective phishing techniques. Attackers claim to be from PayPal, Amazon, your bank, etc. while the actual links and sender addresses point elsewhere. Clues include: the From address not matching the brand's domain, a Reply-To address that goes to a different server, or brand logos/names paired with suspicious URLs.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Trusted brand mentioned alongside a suspicious or obfuscated URL"
+        ]
+      },
+      {
+        "id": "suspicious_url",
+        "category": "Malicious Links",
+        "description": "1 suspicious link pattern found — URL obfuscation, typosquatted domains, or shorteners detected.",
+        "explanation": "Phishers hide dangerous URLs using IP addresses, URL shorteners (bit.ly, tinyurl), typosquatted brand names (paypa1.com), or subdomain tricks (paypal.com.evil.com). Always hover over links to preview the real destination before clicking, and navigate to sites directly instead of through email links.",
+        "severity": "high",
+        "match_count": 1,
+        "matched_examples": [
+          "Google"
+        ]
+      }
+    ],
+    "summary": "2 phishing indicators detected. Total risk score: 50/100 — Risk level: High. The strongest signal: Sender Deception (28 pts).",
+    "recommendations": [
+      "Do not click any links or open any attachments in this email.",
+      "Report this email to your IT or security team immediately.",
+      "Verify any claimed account issues by logging into the service directly (type the URL yourself — do not use email links).",
+      "If you have already clicked a link or entered any information: change affected passwords NOW and enable two-factor authentication.",
+      "Mark the email as phishing/spam so your provider can improve detection for others."
+    ]
+  },
+  {
     "id": "f6cec786-95d4-4e39-b193-580acb28b2dc",
     "saved_at": "2026-05-03T18:46:54.131Z",
     "analyzed_at": "2026-05-03T18:46:51.835Z",

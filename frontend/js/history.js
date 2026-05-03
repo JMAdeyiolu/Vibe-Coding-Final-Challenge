@@ -4,8 +4,8 @@
  * History view logic — loads, filters, renders, and handles deletion.
  */
 
-import { getHistory, deleteAnalysis } from "./api.js";
-import { renderHistoryCard, showToast } from "./ui.js";
+import { getHistory, deleteAnalysis } from "./api.js?v=3";
+import { renderHistoryCard, showToast } from "./ui.js?v=3";
 
 let allRecords = []; // local cache
 
@@ -15,12 +15,16 @@ let allRecords = []; // local cache
  * Fetch all records and re-render the history list.
  */
 export async function loadHistory() {
+  console.log("🟡 [History] Fetching history from MCP server...");
   try {
     const response = await getHistory({ limit: 100 });
+    console.log("🟢 [History] Received response:", response);
+    
     // The API returns an envelope: { records: [...], total_stored: N, ... }
     allRecords = response.records || [];
+    console.log(`🟢 [History] Extracted ${allRecords.length} records.`, allRecords);
   } catch (err) {
-    console.error("Failed to load history:", err);
+    console.error("🔴 [History] Failed to load history:", err);
     allRecords = [];
   }
   applyFilters();
@@ -52,22 +56,23 @@ export function applyFilters() {
   renderList(filtered);
 }
 
+const emptyState = document.getElementById("history-empty");
+
 /**
  * Render the filtered record array into the DOM.
  * @param {object[]} records
  */
 function renderList(records) {
   const container = document.getElementById("history-list");
-  const empty = document.getElementById("history-empty");
   container.innerHTML = "";
 
   if (records.length === 0) {
-    container.appendChild(empty);
-    empty.hidden = false;
+    container.appendChild(emptyState);
+    emptyState.hidden = false;
     return;
   }
 
-  empty.hidden = true;
+  emptyState.hidden = true;
   records.forEach((record) => {
     const card = renderHistoryCard(record);
     container.appendChild(card);

@@ -295,15 +295,20 @@ PhishGuard AI/
 ├── README.md
 ├── package.json
 ├── server/
-│   ├── index.js          # MCP server entry point
+│   ├── index.js          # MCP server entry point (stdio)
+│   ├── shim.js           # HTTP bridge for local frontend dev
 │   ├── tools/
 │   │   ├── analyzeEmail.js
 │   │   ├── saveAnalysis.js
-│   │   ├── getHistory.js
+│   │   ├── getAnalysisHistory.js
 │   │   └── deleteAnalysis.js
 │   └── utils/
 │       ├── detectors.js  # Phishing pattern matching logic
+│       ├── logger.js     # Stderr-only logging utility
 │       └── storage.js    # JSON file read/write helpers
+├── tests/
+│   ├── run.js            # CLI test runner
+│   └── samples.js        # Realistic email fixtures
 ├── data/
 │   └── analyses.json     # Auto-created on first run
 └── frontend/
