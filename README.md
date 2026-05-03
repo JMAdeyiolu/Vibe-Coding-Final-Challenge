@@ -15,7 +15,8 @@
 5. [MCP Tools](#mcp-tools)
 6. [Data Storage](#data-storage)
 7. [Frontend Breakdown](#frontend-breakdown)
-8. [Project Structure](#project-structure)
+8. [How to Run](#how-to-run)
+9. [Project Structure](#project-structure)
 
 ---
 
