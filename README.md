@@ -1,5 +1,7 @@
 # PhishGuard AI
 
+**Created by Juwon Adeyiolu**
+
 > A lightweight web application that uses an AI-powered MCP server to analyze email text for phishing indicators, score risk levels, and maintain a searchable history of past analyses.
 
 ---
