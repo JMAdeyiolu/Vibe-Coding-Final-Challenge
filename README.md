@@ -249,6 +249,45 @@ The app has one HTML file (`index.html`) with three logical views toggled via Ja
 
 ---
 
+## How to Run
+
+There are two primary ways to run this project depending on how you intend to use it:
+
+### 1. Using the Web UI (Development Mode)
+To use the standalone web interface in your browser, you need to run the local HTTP shim server so the frontend can communicate with the backend logic.
+
+1. **Start the API Shim**: In your terminal, run:
+   ```bash
+   npm run dev:shim
+   ```
+   *This starts an HTTP server on port `3001` that bridges the frontend to the MCP tools.*
+2. **Serve the Frontend**: Open a second terminal, navigate to the `frontend` directory, and start a basic web server:
+   ```bash
+   cd frontend
+   python -m http.server 5500
+   ```
+   *(Or use any other static server like `npx serve`)*
+3. **Open in Browser**: Navigate to `http://localhost:5500` to use the app.
+
+### 2. Using as an MCP Server (Production Mode)
+If you want to plug this directly into an AI assistant (like Claude Desktop) that supports the Model Context Protocol:
+
+1. The server communicates over `stdio`. It does not require the HTTP shim.
+2. Add the path to the server into your MCP client's configuration file:
+   ```json
+   {
+     "mcpServers": {
+       "phishguard": {
+         "command": "node",
+         "args": ["/absolute/path/to/PhishGuard-AI/server/index.js"]
+       }
+     }
+   }
+   ```
+3. Your AI host will automatically start the process and have access to the `analyze_email`, `save_analysis`, and `get_analysis_history` tools.
+
+---
+
 ## Project Structure
 
 ```
