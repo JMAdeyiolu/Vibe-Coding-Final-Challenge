@@ -1,0 +1,23 @@
+{
+  "name": "phishguard-ai",
+  "version": "1.0.0",
+  "description": "AI-powered email phishing analysis via MCP server",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node tests/run.js",
+    "test:phishing": "node tests/run.js phishing",
+    "test:clean": "node tests/run.js clean",
+    "test:verbose": "LOG_LEVEL=debug node tests/run.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "uuid": "^9.0.0",
+    "zod": "^3.22.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PhishGuard AI — paste any email and instantly get a phishing risk score, red flags, and safety recommendations." />
+  <title>PhishGuard AI — Email Phishing Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Header / Nav ────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">PhishGuard <span class="logo-accent">AI</span></span>
+      </div>
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-btn active" id="nav-analyze" data-view="analyze">Analyze</button>
+        <button class="nav-btn" id="nav-history" data-view="history">History</button>
+        <button class="nav-btn" id="nav-about" data-view="about">About</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Main Content ───────────────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <!-- ── View: Analyze ─────────────────────────────────────────────── -->
+    <section id="view-analyze" class="view active" aria-label="Email analysis">
+      <div class="view-header">
+        <h1 class="view-title">Analyze Email</h1>
+        <p class="view-subtitle">Paste an email below to check it for phishing indicators.</p>
+      </div>
+
+      <form id="analyze-form" class="analyze-form" novalidate>
+        <div class="textarea-wrapper">
+          <label for="email-input" class="sr-only">Email content</label>
+          <textarea
+            id="email-input"
+            class="email-textarea"
+            placeholder="Paste the full email here — headers, body, everything…"
+            rows="12"
+            spellcheck="false"
+            aria-required="true"
+          ></textarea>
+          <div class="textarea-actions">
+            <button type="button" id="btn-clear" class="btn btn-ghost btn-sm">Clear</button>
+            <span class="char-count" id="char-count">0 characters</span>
+          </div>
+        </div>
+
+        <button type="submit" id="btn-analyze" class="btn btn-primary btn-lg">
+          <span class="btn-label">Analyze Email</span>
+          <span class="btn-spinner" aria-hidden="true" hidden></span>
+        </button>
+      </form>
+
+      <!-- Results Panel (hidden until analysis completes) -->
+      <div id="results-panel" class="results-panel" hidden aria-live="polite">
+        <div class="results-header">
+          <div class="risk-badge-large" id="result-risk-badge">—</div>
+          <div class="result-meta">
+            <p class="result-summary" id="result-summary"></p>
+            <div class="confidence-bar-wrapper">
+              <span class="confidence-label">Confidence</span>
+              <div class="confidence-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="confidence-bar">
+                <div class="confidence-fill" id="confidence-fill"></div>
+              </div>
+              <span class="confidence-pct" id="confidence-pct">0%</span>
+            </div>
+          </div>
+          <div class="result-actions">
+            <button id="btn-save" class="btn btn-secondary btn-sm">Save Result</button>
+            <button id="btn-copy" class="btn btn-ghost btn-sm">Copy Report</button>
+          </div>
+        </div>
+
+        <div class="results-body">
+          <section class="result-section" id="flags-section">
+            <h2 class="section-title">Red Flags <span class="badge" id="flags-count">0</span></h2>
+            <ul class="flags-list" id="flags-list"></ul>
+          </section>
+
+          <section class="result-section" id="recs-section">
+            <h2 class="section-title">Recommendations</h2>
+            <ol class="recs-list" id="recs-list"></ol>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── View: History ──────────────────────────────────────────────── -->
+    <section id="view-history" class="view" aria-label="Analysis history" hidden>
+      <div class="view-header">
+        <h1 class="view-title">History</h1>
+        <p class="view-subtitle">All past analyses, newest first.</p>
+      </div>
+
+      <div class="history-controls">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="history-search"
+            class="history-search"
+            placeholder="Search by keyword…"
+            aria-label="Search history"
+          />
+        </div>
+        <div class="filter-chips" role="group" aria-label="Filter by risk level">
+          <button class="chip active" data-risk="all">All</button>
+          <button class="chip chip-low" data-risk="Low">Low</button>
+          <button class="chip chip-medium" data-risk="Medium">Medium</button>
+          <button class="chip chip-high" data-risk="High">High</button>
+          <button class="chip chip-critical" data-risk="Critical">Critical</button>
+        </div>
+      </div>
+
+      <div id="history-list" class="history-list" aria-live="polite">
+        <p class="empty-state" id="history-empty">No analyses saved yet. Run an analysis and save the result.</p>
+      </div>
+    </section>
+
+    <!-- ── View: About ────────────────────────────────────────────────── -->
+    <section id="view-about" class="view" aria-label="About PhishGuard AI" hidden>
+      <div class="view-header">
+        <h1 class="view-title">About PhishGuard AI</h1>
+        <p class="view-subtitle">How it works and what it looks for.</p>
+      </div>
+
+      <div class="about-content">
+        <article class="about-card">
+          <h2>How It Works</h2>
+          <p>PhishGuard AI connects to a local MCP (Model Context Protocol) server running in Node.js. When you submit an email, the AI model calls the server's <code>analyze_email</code> tool, which runs a battery of pattern-matching detectors against the text and returns a structured result.</p>
+          <p>No email text is ever sent to an external server. All analysis happens on your machine.</p>
+        </article>
+
+        <article class="about-card">
+          <h2>Phishing Indicators Detected</h2>
+          <dl class="indicator-glossary">
+            <dt>Urgency Language</dt>
+            <dd>Phrases designed to make you panic and act without thinking — "Act now," "Your account will be suspended," "Expires in 24 hours."</dd>
+            <dt>Suspicious URLs</dt>
+            <dd>Links using IP addresses, URL shorteners, or typosquatted domain names (e.g., <code>paypa1.com</code> instead of <code>paypal.com</code>).</dd>
+            <dt>Credential Harvesting</dt>
+            <dd>Requests for passwords, payment card numbers, social security numbers, or other sensitive data.</dd>
+            <dt>Spoofed Sender</dt>
+            <dd>An email that claims to be from a well-known brand (PayPal, Amazon, etc.) but links to an unrelated or suspicious domain.</dd>
+            <dt>Generic Greeting</dt>
+            <dd>Legitimate companies usually address you by name. "Dear Customer" is a common phishing tell.</dd>
+            <dt>Threats</dt>
+            <dd>Threats of legal action, fines, or arrest used to pressure you into complying.</dd>
+          </dl>
+        </article>
+
+        <article class="about-card">
+          <h2>Email Safety Tips</h2>
+          <ul class="tips-list">
+            <li>Always hover over links before clicking to verify the real destination URL.</li>
+            <li>When in doubt, navigate directly to the company's website — never use links in emails.</li>
+            <li>Enable two-factor authentication on all important accounts.</li>
+            <li>Report suspected phishing emails to your email provider and IT team.</li>
+            <li>Never enter credentials on a page you reached by clicking an email link.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Toast Notification ──────────────────────────────────────────────── -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
